@@ -229,7 +229,7 @@
 - [x] Render as a vertical nav list
 - [x] Style as sticky sidebar on desktop (left or right)
 - [x] Hide on mobile or show as a floating FAB opener
-- [x] Hide sidebar on scroll (desktop) for better readability
+- [x] Hide sidebar after 0.5s of inactivity (desktop) for better focus
 
 ### 6.2 Scroll Tracking
 - [x] Implement Intersection Observer for each section

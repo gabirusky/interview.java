@@ -39,7 +39,7 @@ export function TableOfContents() {
         // Initial auto-hide after 2s
         scrollTimeout.current = setTimeout(() => {
             setIsVisible(false);
-        }, 2000);
+        }, 500);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
