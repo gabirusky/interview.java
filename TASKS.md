@@ -298,8 +298,9 @@
 - [x] Add `"predeploy": "npm run build"` to package.json scripts
 - [x] Add `"deploy": "gh-pages -d dist"` to package.json scripts
 - [x] Run `npm run build` — verify zero errors
-- [ ] Run `npm run deploy` — verify gh-pages branch created *(manual — after git init + remote)*
-- [ ] Configure GitHub repo: Settings → Pages → Source: gh-pages branch *(manual)*
+- [x] Create `.github/workflows/deploy.yml` GitHub Actions workflow (replaces `gh-pages` npm)
+- [ ] Configure GitHub repo: Settings → Pages → Source: **GitHub Actions** *(manual)*
+- [ ] Push to `main` and verify deployment succeeds *(manual)*
 
 ---
 
