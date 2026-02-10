@@ -19,19 +19,28 @@ export function TableOfContents() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const scrollTimeout = useRef<NodeJS.Timeout | number | null>(null);
+    const isHovered = useRef(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsVisible(false);
+            setIsVisible(true);
             if (scrollTimeout.current) {
                 clearTimeout(scrollTimeout.current as any);
             }
             scrollTimeout.current = setTimeout(() => {
-                setIsVisible(true);
-            }, 1000); // Show again 1s after scrolling stops
+                if (!isHovered.current) {
+                    setIsVisible(false);
+                }
+            }, 2000); // Hide after 2s of inactivity
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
+
+        // Initial auto-hide after 2s
+        scrollTimeout.current = setTimeout(() => {
+            setIsVisible(false);
+        }, 2000);
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
             if (scrollTimeout.current) clearTimeout(scrollTimeout.current as any);
@@ -84,6 +93,17 @@ export function TableOfContents() {
             {/* Desktop sidebar — visible on xl+ */}
             <nav
                 aria-label="Table of Contents"
+                onMouseEnter={() => {
+                    isHovered.current = true;
+                    setIsVisible(true);
+                    if (scrollTimeout.current) clearTimeout(scrollTimeout.current as any);
+                }}
+                onMouseLeave={() => {
+                    isHovered.current = false;
+                    scrollTimeout.current = setTimeout(() => {
+                        setIsVisible(false);
+                    }, 2000);
+                }}
                 className={cn(
                     "fixed right-8 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-2 rounded-xl border border-border/40 bg-background/80 p-4 backdrop-blur-md xl:flex transition-all duration-500 ease-in-out",
                     !isVisible && "translate-x-full opacity-0 pointer-events-none"
