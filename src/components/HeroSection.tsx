@@ -75,7 +75,7 @@ export function HeroSection() {
                         className="mt-8 rounded-xl border border-border/50 bg-card/60 px-4 py-3 font-display text-xs sm:text-sm text-muted-foreground backdrop-blur-sm opacity-0 max-w-full overflow-hidden"
                     >
                         <span className="text-primary">public interface</span>
-                        {" SeniorJavaDev "}
+                        {" InternJavaDev "}
                         <span className="text-accent">extends</span>
                         {" Collections, Algorithms, Concurrency {}"}
                     </div>
