@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { List, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,26 @@ const sections = [
 export function TableOfContents() {
     const [activeSection, setActiveSection] = useState("hero");
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const scrollTimeout = useRef<NodeJS.Timeout | number | null>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsVisible(false);
+            if (scrollTimeout.current) {
+                clearTimeout(scrollTimeout.current as any);
+            }
+            scrollTimeout.current = setTimeout(() => {
+                setIsVisible(true);
+            }, 1000); // Show again 1s after scrolling stops
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (scrollTimeout.current) clearTimeout(scrollTimeout.current as any);
+        };
+    }, []);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -64,7 +84,10 @@ export function TableOfContents() {
             {/* Desktop sidebar — visible on xl+ */}
             <nav
                 aria-label="Table of Contents"
-                className="fixed right-8 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-2 rounded-xl border border-border/40 bg-background/80 p-4 backdrop-blur-md xl:flex"
+                className={cn(
+                    "fixed right-8 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-2 rounded-xl border border-border/40 bg-background/80 p-4 backdrop-blur-md xl:flex transition-all duration-500 ease-in-out",
+                    !isVisible && "translate-x-full opacity-0 pointer-events-none"
+                )}
             >
                 <div className="mb-2 px-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                     Contents
