@@ -307,27 +307,27 @@
 ## Phase 10 — Testing + Final Verification (~10 tasks)
 
 ### 10.1 Build Verification
-- [ ] `npm run build` completes with zero errors
-- [ ] `npx tsc --noEmit` passes type checking
-- [ ] `dist/` output contains `index.html` and hashed JS/CSS assets
+- [X] `npm run build` completes with zero errors
+- [X] `npx tsc --noEmit` passes type checking
+- [X] `dist/` output contains `index.html` and hashed JS/CSS assets
 
 ### 10.2 Content Verification
-- [ ] All 7 major sections render in browser
-- [ ] All Java code blocks have syntax highlighting
-- [ ] All 5 core problems have concept, code, and pitfalls
-- [ ] All 4 advanced problems have concept, code, and pitfalls
-- [ ] All 4 archetypes render correctly
-- [ ] Modern Java section renders all 5 topics
-- [ ] References section renders all 33 citations with working links
-- [ ] Collections table renders all 5 rows with correct data
+- [X] All 7 major sections render in browser
+- [X] All Java code blocks have syntax highlighting
+- [X] All 5 core problems have concept, code, and pitfalls
+- [X] All 4 advanced problems have concept, code, and pitfalls
+- [X] All 4 archetypes render correctly
+- [X] Modern Java section renders all 5 topics
+- [X] References section renders all 33 citations with working links
+- [X] Collections table renders all 5 rows with correct data
 
 ### 10.3 Interaction Verification
-- [ ] Dark/Light theme toggle works correctly
-- [ ] All accordions expand and collapse
-- [ ] Copy-to-clipboard works on code blocks
-- [ ] ToC scroll tracking highlights correct section
-- [ ] Smooth scroll works for all navigation links
-- [ ] Scroll-to-top button appears and works
+- [X] Dark/Light theme toggle works correctly
+- [X] All accordions expand and collapse
+- [X] Copy-to-clipboard works on code blocks
+- [X] ToC scroll tracking highlights correct section
+- [X] Smooth scroll works for all navigation links
+- [X] Scroll-to-top button appears and works
 
 ---
 
