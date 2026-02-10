@@ -3,7 +3,7 @@
 > A comprehensive, single-page study application for Java technical interview preparation — targeting intern and junior developer positions across platforms like **TestDome**, **Codility**, **HackerRank**, and **LeetCode**.
 
 <p align="center">
-  <a href="https://usain.github.io/pesquisa.javainterview/">
+  <a href="https://gabirusky.github.io/interview.java/">
     <img src="https://img.shields.io/badge/🚀_Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge" alt="Live Demo" />
   </a>
 </p>
