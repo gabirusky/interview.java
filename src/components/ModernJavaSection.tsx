@@ -33,7 +33,7 @@ export function ModernJavaSection() {
                     </p>
                 </FadeIn>
 
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {modernJavaTopics.map((topic, index) => {
                         const Icon = icons[topic.id] ?? Sparkles;
 

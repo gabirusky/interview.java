@@ -91,8 +91,8 @@ export function Navbar() {
             {/* Mobile dropdown menu */}
             <div
                 className={cn(
-                    "overflow-hidden border-t border-border/40 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-out md:hidden",
-                    mobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0 border-t-0"
+                    "overflow-hidden border-t border-border/40 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-in-out md:hidden",
+                    mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 border-t-0"
                 )}
             >
                 <div className="mx-auto max-w-6xl px-4 py-3 space-y-1">
@@ -100,7 +100,7 @@ export function Navbar() {
                         <button
                             key={id}
                             onClick={() => scrollToSection(id)}
-                            className="flex w-full items-center rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground min-h-[44px]"
+                            className="flex w-full items-center rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground active:bg-muted active:text-primary min-h-[48px]"
                         >
                             {label}
                         </button>

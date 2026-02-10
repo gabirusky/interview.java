@@ -28,7 +28,7 @@ export function SyllabusCards() {
                     </p>
                 </FadeIn>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {syllabus.map((topic, index) => {
                         const Icon = icons[topic.icon as keyof typeof icons] ?? BookOpen;
 

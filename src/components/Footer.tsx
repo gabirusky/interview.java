@@ -28,7 +28,7 @@ export function Footer() {
                             href="https://github.com/usain/pesquisa.javainterview"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1 transition-colors hover:text-primary"
+                            className="flex items-center gap-1 p-2 -m-2 rounded-md hover:bg-muted/50 transition-colors hover:text-primary active:bg-muted min-h-[44px]"
                         >
                             Source Code
                             <ExternalLink className="h-3 w-3" />

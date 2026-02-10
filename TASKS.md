@@ -331,4 +331,28 @@
 
 ---
 
-**Total estimated tasks: ~168 atomic tasks**
+
+---
+
+## Phase 11 — Advanced Mobile Experience (Requested)
+
+### 11.1 Global Touch Feedback
+- [x] Add `active:scale-95` or `active:bg-accent/10` to interactive elements for tactile feel
+- [x] Ensure `cursor-pointer` is distinct on non-touch devices and touch targets are large on touch inputs
+
+### 11.2 Component Mobile Optimization
+- [x] **Navbar**: Refine mobile menu animation and glassmorphism (ensure high contrast)
+- [x] **HeroSection**: Adjust typography scaling for smaller devices (prevent word breaks in awkward places)
+- [x] **CollectionsTable**: Add visual scroll hints (sticky col) for horizontal scrolling on mobile
+- [x] **SyllabusCards**: Optimize padding and margins for single-column mobile view
+- [x] **CodeBlock**: Ensure font size scales down slightly on mobile for better visibility
+- [x] **ProblemAccordion**: Maximize screen usage when expanded on mobile
+
+### 11.3 App-Shell Polish
+- [x] Verify `meta theme-color` matches dark mode background for integrated status bar feel
+- [x] Disable text selection on UI elements (buttons, nav) for "app-like" feel
+- [x] Ensure `100dvh` (dynamic viewport height) is used where applicable to avoid URL bar layout shifts
+
+---
+
+**Total estimated tasks: ~175 atomic tasks**

@@ -17,7 +17,7 @@ export function HeroSection() {
     return (
         <section
             id="hero"
-            className="relative overflow-hidden py-24 sm:py-32 lg:py-40"
+            className="relative overflow-hidden py-16 sm:py-24 lg:py-40"
         >
             {/* Background decorative elements */}
             <div className="pointer-events-none absolute inset-0">
@@ -30,7 +30,7 @@ export function HeroSection() {
                     {/* Badges */}
                     <div
                         ref={badgesRef}
-                        className="mb-8 flex flex-wrap items-center justify-center gap-2 opacity-0"
+                        className="mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-2 opacity-0"
                     >
                         <Badge variant="outline" className="gap-1 border-primary/30 text-primary">
                             <BookOpen className="h-3 w-3" />

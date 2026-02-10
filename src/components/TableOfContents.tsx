@@ -130,7 +130,7 @@ export function TableOfContents() {
                         variant="ghost"
                         size="icon"
                         onClick={() => setMobileOpen(false)}
-                        className="h-10 w-10 rounded-full"
+                        className="h-11 w-11 rounded-full active:bg-muted"
                         aria-label="Close table of contents"
                     >
                         <X className="h-5 w-5" />

@@ -35,8 +35,8 @@ export function CollectionsTable() {
                         <Table>
                             <TableHeader>
                                 <TableRow className="bg-muted/50 hover:bg-muted/50">
-                                    <TableHead className="w-[150px]">Interface</TableHead>
-                                    <TableHead className="w-[150px]">Implementation</TableHead>
+                                    <TableHead className="w-[150px] whitespace-nowrap sticky left-0 z-20 bg-card shadow-[2px_0_5px_-2px_rgba(0,0,0,0.3)]">Interface</TableHead>
+                                    <TableHead className="w-[150px] whitespace-nowrap">Implementation</TableHead>
                                     <TableHead className="w-[200px]">Internal Structure</TableHead>
                                     <TableHead className="w-[150px]">Time Complexity</TableHead>
                                     <TableHead className="min-w-[200px]">Best Use Case</TableHead>
@@ -45,8 +45,8 @@ export function CollectionsTable() {
                             </TableHeader>
                             <TableBody>
                                 {collections.map((row) => (
-                                    <TableRow key={row.implementation} className="group">
-                                        <TableCell className="font-medium">{row.interface}</TableCell>
+                                    <TableRow key={row.implementation} className="group hover:bg-muted/50">
+                                        <TableCell className="font-medium sticky left-0 z-10 bg-card group-hover:bg-muted/50 transition-colors shadow-[2px_0_5px_-2px_rgba(0,0,0,0.3)]">{row.interface}</TableCell>
                                         <TableCell>
                                             <Badge variant="outline" className="font-mono text-xs">
                                                 {row.implementation}

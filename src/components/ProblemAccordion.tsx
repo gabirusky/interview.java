@@ -21,9 +21,9 @@ export function ProblemAccordion({ problem, index }: ProblemAccordionProps) {
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem
                 value={problem.id}
-                className="rounded-xl border border-border/60 bg-card/40 px-1 transition-colors data-[state=open]:bg-card/70"
+                className="rounded-xl border border-border/60 bg-card/40 px-0 sm:px-1 transition-colors data-[state=open]:bg-card/70"
             >
-                <AccordionTrigger className="px-5 py-4 hover:no-underline [&[data-state=open]>div>.badge-wrap]:opacity-100">
+                <AccordionTrigger className="px-4 sm:px-5 py-4 hover:no-underline [&[data-state=open]>div>.badge-wrap]:opacity-100">
                     <div className="flex flex-1 items-center gap-3 text-left">
                         {index !== undefined && (
                             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-display text-xs font-bold text-primary">
