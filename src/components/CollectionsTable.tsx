@@ -46,7 +46,8 @@ export function CollectionsTable() {
                 </FadeIn>
 
                 <FadeIn delay={200} className="rounded-xl border border-border/50 bg-card shadow-sm overflow-hidden">
-                    <div className="overflow-x-auto">
+                    {/* Desktop View */}
+                    <div className="hidden md:block overflow-x-auto">
                         <Table>
                             <TableHeader>
                                 <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -93,6 +94,45 @@ export function CollectionsTable() {
                                 ))}
                             </TableBody>
                         </Table>
+                    </div>
+
+                    {/* Mobile View */}
+                    <div className="md:hidden divide-y divide-border/50">
+                        {collections.map((row) => (
+                            <div key={row.implementation} className="p-4 space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex flex-col">
+                                        <span className="text-xs font-semibold text-primary uppercase tracking-wider">{row.interface}</span>
+                                        <span className="text-lg font-bold font-mono">{row.implementation}</span>
+                                    </div>
+                                    <Badge
+                                        variant="outline"
+                                        className={`font-mono text-[10px] ${getComplexityColor(
+                                            row.timeComplexity
+                                        )}`}
+                                    >
+                                        {row.timeComplexity}
+                                    </Badge>
+                                </div>
+                                <div className="grid grid-cols-1 gap-3 text-sm">
+                                    <div>
+                                        <span className="text-muted-foreground font-medium block mb-0.5">Internal Structure</span>
+                                        <p>{row.internalStructure}</p>
+                                    </div>
+                                    <div>
+                                        <span className="text-muted-foreground font-medium block mb-0.5">Best Use Case</span>
+                                        <p>{row.bestUse}</p>
+                                    </div>
+                                    <div className="rounded-lg bg-destructive/5 p-3 border border-destructive/10">
+                                        <span className="text-destructive font-medium flex items-center gap-1.5 mb-1 text-xs uppercase tracking-wide">
+                                            <AlertCircle className="h-3.5 w-3.5" />
+                                            Common Pitfall
+                                        </span>
+                                        <p className="text-muted-foreground text-xs leading-relaxed">{row.pitfall}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </FadeIn>
 

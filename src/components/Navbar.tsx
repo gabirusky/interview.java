@@ -76,7 +76,7 @@ export function Navbar() {
                         variant="ghost"
                         size="icon"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="h-10 w-10 md:hidden"
+                        className="h-11 w-11 md:hidden"
                         aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                     >
                         {mobileMenuOpen ? (

@@ -30,16 +30,16 @@ export function SectionModal({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="max-w-3xl max-h-[85vh] overflow-hidden flex flex-col gap-0 border-border/60 bg-card/95 backdrop-blur-xl p-0">
+            <DialogContent className="w-[95vw] sm:max-w-3xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden flex flex-col gap-0 border-border/60 bg-card/95 backdrop-blur-xl p-0">
                 {/* Header */}
-                <DialogHeader className="shrink-0 border-b border-border/40 px-6 py-5">
+                <DialogHeader className="shrink-0 border-b border-border/40 px-4 sm:px-6 py-4 sm:py-5">
                     <div className="flex items-center justify-between">
-                        <DialogTitle className="font-display text-xl font-bold tracking-tight sm:text-2xl">
+                        <DialogTitle className="font-display text-lg font-bold tracking-tight sm:text-2xl text-left">
                             {title}
                         </DialogTitle>
                         <button
                             onClick={() => onOpenChange(false)}
-                            className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary h-10 w-10 flex items-center justify-center"
                             aria-label="Close"
                         >
                             <X className="h-5 w-5" />
@@ -48,22 +48,22 @@ export function SectionModal({
                 </DialogHeader>
 
                 {/* Scrollable content area */}
-                <div className="flex-1 overflow-y-auto px-6 py-6">
+                <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-6">
                     {markdown ? (
                         <article className="prose prose-sm prose-invert max-w-none
                             prose-headings:font-display prose-headings:tracking-tight prose-headings:text-foreground
-                            prose-h1:text-2xl prose-h1:font-bold prose-h1:mb-4 prose-h1:mt-0
-                            prose-h2:text-xl prose-h2:font-semibold prose-h2:mb-3 prose-h2:mt-6
-                            prose-h3:text-lg prose-h3:font-semibold prose-h3:mb-2 prose-h3:mt-4
+                            prose-h1:text-xl sm:prose-h1:text-2xl prose-h1:font-bold prose-h1:mb-4 prose-h1:mt-0
+                            prose-h2:text-lg sm:prose-h2:text-xl prose-h2:font-semibold prose-h2:mb-3 prose-h2:mt-6
+                            prose-h3:text-base sm:prose-h3:text-lg prose-h3:font-semibold prose-h3:mb-2 prose-h3:mt-4
                             prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-3
                             prose-a:text-primary prose-a:no-underline hover:prose-a:underline
                             prose-strong:text-foreground prose-strong:font-semibold
                             prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-xs prose-code:font-display prose-code:text-primary
-                            prose-pre:rounded-xl prose-pre:border prose-pre:border-border/50 prose-pre:bg-muted/50 prose-pre:p-4
+                            prose-pre:rounded-xl prose-pre:border prose-pre:border-border/50 prose-pre:bg-muted/50 prose-pre:p-4 prose-pre:overflow-x-auto
                             prose-ul:text-muted-foreground prose-ol:text-muted-foreground
                             prose-li:text-muted-foreground prose-li:marker:text-primary/60
                             prose-blockquote:border-primary/30 prose-blockquote:text-muted-foreground prose-blockquote:italic
-                            prose-table:text-sm
+                            prose-table:text-xs sm:prose-table:text-sm prose-table:block prose-table:overflow-x-auto
                             prose-th:text-foreground prose-th:font-semibold prose-th:border-border
                             prose-td:border-border prose-td:text-muted-foreground
                             prose-hr:border-border/40
