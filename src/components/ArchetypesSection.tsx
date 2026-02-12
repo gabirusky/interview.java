@@ -8,10 +8,15 @@ import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/CodeBlock";
 import { Separator } from "@/components/ui/separator";
 import { archetypes } from "@/data/archetypes";
-import { Lightbulb, Code2, AlertTriangle } from "lucide-react";
+import { Lightbulb, Code2, AlertTriangle, BookOpen } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import { useState } from "react";
+import { SectionModal } from "@/components/SectionModal";
+import { Button } from "@/components/ui/button";
 
 export function ArchetypesSection() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section id="archetypes" className="py-16 sm:py-24">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -22,6 +27,16 @@ export function ArchetypesSection() {
                     <p className="mt-4 text-lg text-muted-foreground">
                         Common patterns in screening for logical reasoning and optimization.
                     </p>
+                    <div className="mt-6 flex justify-center">
+                        <Button
+                            variant="outline"
+                            className="gap-2"
+                            onClick={() => setIsModalOpen(true)}
+                        >
+                            <BookOpen className="h-4 w-4" />
+                            Archetypes Guide
+                        </Button>
+                    </div>
                 </FadeIn>
 
                 <div className="grid gap-6 md:grid-cols-2">
@@ -99,6 +114,13 @@ export function ArchetypesSection() {
                         </FadeIn>
                     ))}
                 </div>
+
+                <SectionModal
+                    open={isModalOpen}
+                    onOpenChange={setIsModalOpen}
+                    title="Common Archetypes Analysis"
+                    contentId="archetypes"
+                />
             </div>
         </section>
     );

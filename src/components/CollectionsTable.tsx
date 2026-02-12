@@ -8,10 +8,15 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { collections } from "@/data/collections";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, BookOpen } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import { useState } from "react";
+import { SectionModal } from "@/components/SectionModal";
+import { Button } from "@/components/ui/button";
 
 export function CollectionsTable() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const getComplexityColor = (complexity: string) => {
         if (complexity.includes("O(1)")) return "bg-green-500/10 text-green-500 hover:bg-green-500/20 border-green-500/20";
         if (complexity.includes("log")) return "bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20 border-yellow-500/20";
@@ -28,6 +33,16 @@ export function CollectionsTable() {
                     <p className="mt-4 text-lg text-muted-foreground">
                         Knowing when to use what is the hallmark of a senior engineer.
                     </p>
+                    <div className="mt-6 flex justify-center">
+                        <Button
+                            variant="outline"
+                            className="gap-2"
+                            onClick={() => setIsModalOpen(true)}
+                        >
+                            <BookOpen className="h-4 w-4" />
+                            Read Full Guide
+                        </Button>
+                    </div>
                 </FadeIn>
 
                 <FadeIn delay={200} className="rounded-xl border border-border/50 bg-card shadow-sm overflow-hidden">
@@ -80,6 +95,13 @@ export function CollectionsTable() {
                         </Table>
                     </div>
                 </FadeIn>
+
+                <SectionModal
+                    open={isModalOpen}
+                    onOpenChange={setIsModalOpen}
+                    title="Collections Framework Guide"
+                    contentId="collections-framework"
+                />
             </div>
         </section>
     );

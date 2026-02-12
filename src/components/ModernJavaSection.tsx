@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { modernJavaTopics } from "@/data/modernJava";
 import { Sparkles, Layers, Box, FileCode, CheckCircle2 } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import { useState } from "react";
+import { SectionModal } from "@/components/SectionModal";
 
 const icons: Record<string, typeof Sparkles> = {
     "virtual-threads": Sparkles,
@@ -18,6 +20,8 @@ const icons: Record<string, typeof Sparkles> = {
 };
 
 export function ModernJavaSection() {
+    const [selectedTopic, setSelectedTopic] = useState<{ id: string; title: string } | null>(null);
+
     return (
         <section id="modern-java" className="bg-muted/30 py-16 sm:py-24">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -40,40 +44,51 @@ export function ModernJavaSection() {
                         return (
                             <FadeIn
                                 key={topic.id}
-                                as={Card}
                                 delay={index * 100}
-                                className="group border-border/50 bg-card/60 transition-colors hover:border-primary/40 hover:bg-card/80"
+                                className="h-full"
                             >
-                                <CardHeader>
-                                    <div className="flex items-start justify-between">
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-secondary-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                                            <Icon className="h-5 w-5" />
+                                <Card
+                                    onClick={() => setSelectedTopic({ id: topic.id, title: topic.title })}
+                                    className="group h-full cursor-pointer border-border/50 bg-card/60 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card/80 active:scale-95"
+                                >
+                                    <CardHeader>
+                                        <div className="flex items-start justify-between">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-secondary-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                                <Icon className="h-5 w-5" />
+                                            </div>
+                                            <Badge variant="outline" className="font-mono text-xs">
+                                                {topic.javaVersion}
+                                            </Badge>
                                         </div>
-                                        <Badge variant="outline" className="font-mono text-xs">
-                                            {topic.javaVersion}
-                                        </Badge>
-                                    </div>
-                                    <CardTitle className="mt-4 font-display text-xl">
-                                        {topic.title}
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="mb-4 text-sm text-muted-foreground">
-                                        {topic.description}
-                                    </p>
-                                    <ul className="space-y-1.5">
-                                        {topic.keyPoints.slice(0, 3).map((point, i) => (
-                                            <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-                                                <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary/60" />
-                                                {point}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </CardContent>
+                                        <CardTitle className="mt-4 font-display text-xl">
+                                            {topic.title}
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="mb-4 text-sm text-muted-foreground">
+                                            {topic.description}
+                                        </p>
+                                        <ul className="space-y-1.5">
+                                            {topic.keyPoints.slice(0, 3).map((point, i) => (
+                                                <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                                    <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary/60" />
+                                                    {point}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
                             </FadeIn>
                         );
                     })}
                 </div>
+
+                <SectionModal
+                    open={!!selectedTopic}
+                    onOpenChange={(open) => !open && setSelectedTopic(null)}
+                    title={selectedTopic?.title ?? ""}
+                    contentId={selectedTopic?.id ?? null}
+                />
             </div>
         </section>
     );

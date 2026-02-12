@@ -356,4 +356,29 @@
 
 ---
 
-**Total estimated tasks: ~175 atomic tasks**
+## Phase 12 — Expanded Content System (Requested)
+
+### 12.1 Infrastructure
+- [x] Install content dependencies: `npm install react-markdown remark-gfm`
+- [x] Create `src/content/` directory for deep-dive markdown files
+- [x] Implement `SectionModal.tsx` component with custom prose styling
+- [x] Create `src/content/index.ts` registry for mapping section IDs to `.md?raw` imports
+
+### 12.2 Content Placeholders
+- [x] Create placeholder `.md` files for all major sections:
+  - [x] 4 Syllabus topics
+  - [x] Collections Framework guide
+  - [x] Core Problems guide
+  - [x] Advanced Problems guide
+  - [x] Archetypes guide
+  - [x] 5 Modern Java topic guides
+
+### 12.3 Component Integration
+- [x] **SyllabusCards**: Implement click handler and wire up `SectionModal`
+- [x] **CollectionsTable**: Add "Read Full Guide" button and wire up `SectionModal`
+- [x] **CoreProblemsSection**: Add "Core Problems Guide" button and wire up `SectionModal`
+- [x] **AdvancedProblemsSection**: Add "Advanced Guide" button and wire up `SectionModal`
+- [x] **ArchetypesSection**: Add "Archetypes Guide" button and wire up `SectionModal`
+- [x] **ModernJavaSection**: Implement click handler on cards and wire up `SectionModal`
+
+---

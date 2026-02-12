@@ -140,12 +140,13 @@ Invert luminosity values while keeping hue relationships. Toggle via shadcn's bu
 | `Footer` | custom | Credits |
 | `ThemeToggle` | `Button` + `DropdownMenu` | Dark/Light switch |
 | `ScrollToTop` | `Button` | Floating button |
+| `SectionModal` | `Dialog` | Markdown deep-dive popup |
 
 ---
 
 ## 6. Content Data Model
 
-All article content will be stored as **structured TypeScript data** (not markdown-at-runtime) in `src/data/` files:
+All article content will be stored as **structured TypeScript data** (not markdown-at-runtime) in `src/data/` files for primary UI rendering. Full deep-dive content is stored as **Markdown files** in `src/content/` and loaded via Vite's `?raw` suffix:
 
 ```
 src/data/
