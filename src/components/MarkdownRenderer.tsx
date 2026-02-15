@@ -56,7 +56,9 @@ const markdownComponents = {
     code({ className, children, ...props }: ComponentPropsWithoutRef<"code">) {
         const match = /language-(\w+)/.exec(className || "");
         const codeString = String(children).replace(/\n$/, "");
+        const isMultiLine = codeString.includes("\n");
 
+        // Fenced code block WITH a language → full syntax highlighting
         if (match) {
             return (
                 <div className="group/code relative my-4 overflow-hidden rounded-xl border border-border/50 bg-[hsl(222,47%,7%)]">
@@ -100,6 +102,20 @@ const markdownComponents = {
             );
         }
 
+        // Fenced code block WITHOUT a language (flowcharts, ASCII diagrams, pseudocode)
+        if (isMultiLine) {
+            return (
+                <div className="group/code relative my-4 overflow-hidden rounded-xl border border-border/50 bg-[hsl(222,47%,7%)]">
+                    <CopyButton text={codeString} />
+                    <div className="overflow-x-auto p-5">
+                        <pre className="whitespace-pre font-display text-[0.8rem] leading-relaxed text-muted-foreground">
+                            {codeString}
+                        </pre>
+                    </div>
+                </div>
+            );
+        }
+
         // Inline code
         return (
             <code
@@ -111,7 +127,7 @@ const markdownComponents = {
         );
     },
 
-    /* ── Don't double-wrap pre ── */
+    /* ── Pre: pass through since code handler already wraps blocks ── */
     pre({ children }: ComponentPropsWithoutRef<"pre">) {
         return <>{children}</>;
     },
