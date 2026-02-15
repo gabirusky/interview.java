@@ -25,7 +25,7 @@ export function Footer() {
 
                     <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
                         <a
-                            href="https://github.com/usain/pesquisa.javainterview"
+                            href="https://github.com/gabirusky/interview.java"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1 p-2 -m-2 rounded-md hover:bg-muted/50 transition-colors hover:text-primary active:bg-muted min-h-[44px]"
