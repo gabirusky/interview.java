@@ -140,7 +140,7 @@ export function TableOfContents() {
                 size="icon"
                 onClick={() => setMobileOpen(true)}
                 className={cn(
-                    "fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full border-primary/20 bg-primary/10 text-primary shadow-xl shadow-primary/10 backdrop-blur-md transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary active:scale-90 xl:hidden",
+                    "fixed bottom-6 left-6 z-50 h-14 w-14 rounded-full border-primary/20 bg-primary/10 text-primary shadow-xl shadow-primary/10 backdrop-blur-md transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary active:scale-90 xl:hidden",
                     mobileOpen && "opacity-0 pointer-events-none"
                 )}
                 aria-label="Open table of contents"
