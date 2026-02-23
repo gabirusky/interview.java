@@ -38,11 +38,12 @@ Each problem includes:
 
 - 🌓 **Dark/Light theme** toggle with smooth transitions
 - 📋 **Copy-to-clipboard** on all Java code blocks with toast feedback
-- 🎯 **Table of Contents** — sticky sidebar on desktop, bottom sheet drawer on mobile
+- 🎯 **Table of Contents** — sticky sidebar on desktop; mobile FAB (bottom-left) opens a bottom sheet drawer; auto-hides after 2 s of scroll inactivity and reappears on hover
+- 📖 **Clickable section cards** — every card, table row, and accordion opens a full-screen modal with a complete in-depth markdown guide (including flowcharts)
 - 🎬 **Scroll animations** — fade-in-up with staggered delays
-- 📱 **Fully responsive** — tested at 375px, 768px, 1280px, and 1920px
+- 📱 **Fully responsive** — tested at 375px, 768px, 1280px, and 1920px; mobile layout keeps the TOC trigger (bottom-left) and scroll-to-top (bottom-right) from overlapping
 - 🍔 **Mobile navigation** — hamburger menu with quick section links
-- ⬆️ **Scroll-to-top** floating button
+- ⬆️ **Scroll-to-top** floating button (bottom-right)
 - 🔍 **Syntax highlighting** — PrismJS (One Dark theme) for all Java code
 - ♿ **Accessible** — keyboard navigation, ARIA labels, semantic HTML, WCAG AA contrast
 
@@ -80,25 +81,42 @@ pesquisa.javainterview/
 │   ├── hooks/
 │   │   └── useScrollAnimation.ts   ← IntersectionObserver-based scroll animation hook
 │   ├── components/
-│   │   ├── ui/                     ← shadcn primitives (Accordion, Button, Card, Table, etc.)
+│   │   ├── ui/                     ← shadcn primitives (Accordion, Button, Card, Dialog, Table, etc.)
 │   │   ├── Navbar.tsx              ← Sticky nav with hamburger menu + desktop links
 │   │   ├── HeroSection.tsx         ← Title, subtitle, CTA, animated badges
-│   │   ├── SyllabusCards.tsx       ← 4 topic cards in responsive grid
-│   │   ├── CollectionsTable.tsx    ← Comparison table with complexity badges
-│   │   ├── CoreProblemsSection.tsx ← "Big 5" problems with accordions
+│   │   ├── SyllabusCards.tsx       ← 4 topic cards (clickable → modal)
+│   │   ├── CollectionsTable.tsx    ← Comparison table with complexity badges (rows clickable → modal)
+│   │   ├── CoreProblemsSection.tsx ← "Big 5" problems with accordions (clickable → modal)
 │   │   ├── AdvancedProblemsSection.tsx
-│   │   ├── ArchetypesSection.tsx   ← 2-column card layout
-│   │   ├── ModernJavaSection.tsx   ← Topic cards with Java version badges
+│   │   ├── ArchetypesSection.tsx   ← 2-column card layout (clickable → modal)
+│   │   ├── ModernJavaSection.tsx   ← Topic cards with Java version badges (clickable → modal)
 │   │   ├── ReferencesSection.tsx   ← Numbered citation links
 │   │   ├── ProblemAccordion.tsx    ← Reusable accordion for problems
 │   │   ├── CodeBlock.tsx           ← Syntax highlighter + copy button
 │   │   ├── PitfallAlert.tsx        ← Warning callout component
 │   │   ├── FadeIn.tsx              ← Scroll animation wrapper
-│   │   ├── TableOfContents.tsx     ← Desktop sidebar + mobile bottom sheet
+│   │   ├── SectionModal.tsx        ← Full-screen dialog rendering markdown guides
+│   │   ├── MarkdownRenderer.tsx    ← Custom markdown renderer (headers, code, tables, flowcharts)
+│   │   ├── TableOfContents.tsx     ← Desktop sidebar + mobile bottom sheet (auto-hide on scroll)
 │   │   ├── ThemeProvider.tsx       ← Dark/Light mode context
 │   │   ├── ThemeToggle.tsx         ← Sun/Moon toggle button
-│   │   ├── ScrollToTop.tsx         ← Floating scroll button
+│   │   ├── ScrollToTop.tsx         ← Floating scroll button (bottom-right on mobile)
 │   │   └── Footer.tsx
+│   ├── content/                    ← Markdown guide files (one per section)
+│   │   ├── index.ts                ← Barrel export mapping section keys → markdown imports
+│   │   ├── core-problems.md
+│   │   ├── advanced-problems.md
+│   │   ├── archetypes.md
+│   │   ├── collections-framework.md
+│   │   ├── syllabus-core-language.md
+│   │   ├── syllabus-collections.md
+│   │   ├── syllabus-concurrency.md
+│   │   ├── syllabus-functional.md
+│   │   ├── modern-java-virtual-threads.md
+│   │   ├── modern-java-records.md
+│   │   ├── modern-java-pattern-matching.md
+│   │   ├── modern-java-stream-grouping.md
+│   │   └── modern-java-concurrency-pitfalls.md
 │   └── data/
 │       ├── types.ts                ← TypeScript interfaces (Problem, Pitfall, etc.)
 │       ├── syllabus.ts             ← 4 syllabus topic objects
@@ -217,7 +235,10 @@ All content is stored as **structured TypeScript data** in `src/data/` files —
 | `ProblemAccordion` | Reusable expandable panel displaying concept, approach, Java code, and pitfalls |
 | `CodeBlock` | Wraps PrismJS syntax highlighter with copy-to-clipboard, file name header, and macOS-style dots |
 | `FadeIn` | Generic scroll-triggered animation wrapper using IntersectionObserver |
-| `TableOfContents` | Dual-mode: desktop sticky sidebar + mobile FAB with bottom sheet drawer |
+| `SectionModal` | Full-screen dialog triggered by clicking any section card/row; loads the matching markdown guide |
+| `MarkdownRenderer` | Custom renderer for the in-modal guides — supports headings, code blocks, tables, and Mermaid-style flowcharts |
+| `TableOfContents` | Dual-mode: desktop sticky sidebar (auto-hides after 2 s idle) + mobile FAB (bottom-left) with bottom sheet drawer |
+| `ScrollToTop` | Floating button fixed to bottom-right on all viewports |
 | `ThemeProvider` | React context managing dark/light mode with localStorage persistence |
 
 ---
