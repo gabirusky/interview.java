@@ -39,18 +39,18 @@ export function ArchetypesSection() {
                     </div>
                 </FadeIn>
 
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-6 md:grid-cols-2 w-full min-w-0">
                     {archetypes.map((archetype, index) => (
                         <FadeIn
                             key={archetype.id}
                             as={Card}
                             delay={index * 100}
-                            className="border-border/50 bg-card/40"
+                            className="border-border/50 bg-card/40 overflow-hidden min-w-0 w-full"
                         >
                             <CardHeader>
-                                <div className="flex flex-wrap items-start justify-between gap-4">
-                                    <div className="space-y-1">
-                                        <CardTitle className="font-display text-xl">
+                                <div className="flex flex-wrap items-start gap-4 min-w-0">
+                                    <div className="space-y-1 min-w-0 w-full">
+                                        <CardTitle className="font-display text-xl break-words">
                                             {archetype.title}
                                         </CardTitle>
                                         <div className="flex flex-wrap gap-2">
@@ -64,30 +64,30 @@ export function ArchetypesSection() {
                                     </div>
                                 </div>
                             </CardHeader>
-                            <CardContent className="space-y-4">
+                            <CardContent className="space-y-4 min-w-0 w-full">
                                 {/* Concept */}
-                                <div className="text-sm">
+                                <div className="text-sm min-w-0">
                                     <div className="mb-1 flex items-center gap-1.5 font-semibold text-foreground">
-                                        <Lightbulb className="h-3.5 w-3.5 text-accent" />
+                                        <Lightbulb className="h-3.5 w-3.5 text-accent shrink-0" />
                                         Concept
                                     </div>
-                                    <p className="text-muted-foreground">{archetype.concept}</p>
+                                    <p className="text-muted-foreground break-words">{archetype.concept}</p>
                                 </div>
 
                                 <Separator className="opacity-50" />
 
                                 {/* Optimal Approach */}
-                                <div className="text-sm">
+                                <div className="text-sm min-w-0">
                                     <div className="mb-1 flex items-center gap-1.5 font-semibold text-foreground">
-                                        <Code2 className="h-3.5 w-3.5 text-primary" />
+                                        <Code2 className="h-3.5 w-3.5 text-primary shrink-0" />
                                         Optimal Approach
                                     </div>
-                                    <p className="text-muted-foreground">{archetype.optimalApproach}</p>
+                                    <p className="text-muted-foreground break-words">{archetype.optimalApproach}</p>
                                 </div>
 
                                 {/* Code Block if present */}
                                 {archetype.code && (
-                                    <div className="mt-2">
+                                    <div className="mt-2 w-full overflow-x-auto">
                                         <CodeBlock
                                             code={archetype.code}
                                             language="java"
@@ -99,12 +99,12 @@ export function ArchetypesSection() {
                                 {archetype.pitfalls.length > 0 && (
                                     <>
                                         <Separator className="opacity-50" />
-                                        <div className="rounded-lg border border-destructive/20 bg-destructive/5 p-3">
+                                        <div className="rounded-lg border border-destructive/20 bg-destructive/5 p-3 min-w-0">
                                             <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold text-destructive">
-                                                <AlertTriangle className="h-3.5 w-3.5" />
-                                                Pitfall: {archetype.pitfalls[0].title}
+                                                <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
+                                                <span className="break-words">Pitfall: {archetype.pitfalls[0].title}</span>
                                             </div>
-                                            <p className="text-xs text-muted-foreground">
+                                            <p className="text-xs text-muted-foreground break-words">
                                                 {archetype.pitfalls[0].description}
                                             </p>
                                         </div>
